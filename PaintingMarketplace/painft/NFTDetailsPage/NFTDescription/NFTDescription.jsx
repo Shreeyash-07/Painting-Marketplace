@@ -29,7 +29,7 @@ import { ethers } from "ethers";
 //IMPORT SMART CONTRACT
 import { PaintingMarketplaceContext } from "../../context/PaintingMarketplaceContext";
 
-const NFTDescription = ({ NFT, isListed }) => {
+const NFTDescription = ({ nft, isListed }) => {
   const [social, setSocial] = useState(false);
   const [NFTMenu, setNFTMenu] = useState(false);
   const [history, setHistory] = useState(true);
@@ -38,8 +38,6 @@ const NFTDescription = ({ NFT, isListed }) => {
   const [error, setError] = useState("");
   const [openError, setOpenError] = useState(false);
   const router = useRouter();
-  const [nft, setNft] = useState(NFT);
-  console.log({ NFT });
   console.log({ nftfromdesription: nft });
   const openSocial = () => {
     if (!social) {
