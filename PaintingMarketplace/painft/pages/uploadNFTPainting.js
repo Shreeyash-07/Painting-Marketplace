@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 
 //INTERNAL IMPORT
-import Style from "../styles/upload-nft.module.css";
+import Style from "../Styles/upload-nft.module.css";
 import { UploadNFT } from "../uploadNFT/uploadNFTIndex";
 
 //SMART CONTRACT IMPORT
