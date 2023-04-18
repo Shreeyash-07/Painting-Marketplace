@@ -9,7 +9,7 @@ const NFTDetailsPage = ({ nft, isListed }) => {
     <div className={Style.NFTDetailsPage}>
       <div className={Style.NFTDetailsPage_box}>
         {nft && <NFTDetailsImg nft={nft} />}
-        {<NFTDescription NFT={nft} isListed={isListed} />}
+        {<NFTDescription nft={nft} isListed={isListed} />}
       </div>
     </div>
   );
