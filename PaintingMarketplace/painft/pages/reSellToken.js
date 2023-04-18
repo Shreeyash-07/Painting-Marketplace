@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 
 //INTERNAL IMPORT
-import Style from "../styles/reSellToken.module.css";
+import Style from "../Styles/reSellToken.module.css";
 import formStyle from "../AccountPage/Form/Form.module.css";
 import { Button } from "../components/componentindex";
 
@@ -22,7 +22,8 @@ const reSellToken = () => {
     if (!tokenURI) return;
 
     const { data } = await axios.get(tokenURI);
-
+    console.log({ datafull: data });
+    console.log({ data: data.iamge });
     setImage(data.image);
   };
 

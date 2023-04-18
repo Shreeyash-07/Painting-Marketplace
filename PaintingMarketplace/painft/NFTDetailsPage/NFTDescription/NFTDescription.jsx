@@ -29,7 +29,7 @@ import { ethers } from "ethers";
 //IMPORT SMART CONTRACT
 import { PaintingMarketplaceContext } from "../../context/PaintingMarketplaceContext";
 
-const NFTDescription = ({ nft, isListed }) => {
+const NFTDescription = ({ NFT, isListed }) => {
   const [social, setSocial] = useState(false);
   const [NFTMenu, setNFTMenu] = useState(false);
   const [history, setHistory] = useState(true);
@@ -38,29 +38,9 @@ const NFTDescription = ({ nft, isListed }) => {
   const [error, setError] = useState("");
   const [openError, setOpenError] = useState(false);
   const router = useRouter();
-  console.log({ nft });
-  // const historyArray = [
-  //   images.user1,
-  //   images.user2,
-  //   images.user3,
-  //   images.user4,
-  //   images.user5,
-  // ];
-  // const provananceArray = [
-  //   images.user6,
-  //   images.user7,
-  //   images.user8,
-  //   images.user9,
-  //   images.user10,
-  // ];
-  // const ownerArray = [
-  //   images.user1,
-  //   images.user8,
-  //   images.user2,
-  //   images.user6,
-  //   images.user5,
-  // ];
-
+  const [nft, setNft] = useState(NFT);
+  console.log({ NFT });
+  console.log({ nftfromdesription: nft });
   const openSocial = () => {
     if (!social) {
       setSocial(true);
@@ -277,37 +257,40 @@ const NFTDescription = ({ nft, isListed }) => {
 
               <span>[96 in stock]</span>
             </div>
-
-            <div className={Style.NFTDescription_box_profile_biding_box_button}>
-              {currentAccount == nft.seller.toLowerCase() ? (
-                <p>You can't buy your own NFT</p>
-              ) : currentAccount == nft.owner.toLowerCase() ? (
-                <Button
-                  icon={<FaWallet />}
-                  btnName="List on Marketplace"
-                  handleClick={() =>
-                    router.push(
-                      `/reSellToken?id=${nft.tokenId}&tokenURI=${nft.tokenURI}&price=${nft.price}`
-                    )
-                  }
-                  classStyle={Style.button}
-                />
-              ) : (
-                <Button
-                  icon={<FaWallet />}
-                  btnName="Buy NFT"
-                  handleClick={() => buyNFT(nft)}
-                  classStyle={Style.button}
-                />
-              )}
-              {/* 
+            {nft && (
+              <div
+                className={Style.NFTDescription_box_profile_biding_box_button}
+              >
+                {currentAccount == nft.seller.toLowerCase() ? (
+                  <p>You can't buy your own NFT</p>
+                ) : currentAccount == nft.owner.toLowerCase() ? (
+                  <Button
+                    icon={<FaWallet />}
+                    btnName="List on Marketplace"
+                    handleClick={() =>
+                      router.push(
+                        `/reSellToken?id=${nft.tokenId}&tokenURI=${nft.image}&price=${nft.price}&paintingName=${nft.name}`
+                      )
+                    }
+                    classStyle={Style.button}
+                  />
+                ) : (
+                  <Button
+                    icon={<FaWallet />}
+                    btnName="Buy NFT"
+                    handleClick={() => buyNFT(nft)}
+                    classStyle={Style.button}
+                  />
+                )}
+                {/* 
               <Button
                 icon={<FaPercentage />}
                 btnName="Make offer"
                 handleClick={() => {}}
                 classStyle={Style.button}
               /> */}
-            </div>
+              </div>
+            )}
 
             <div className={Style.NFTDescription_box_profile_biding_box_tabs}>
               <button onClick={(e) => openTabs(e)}>Bid History</button>

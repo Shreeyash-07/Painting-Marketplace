@@ -11,7 +11,7 @@ import Style from "./Upload.module.css";
 import formStyle from "../AccountPage/Form/Form.module.css";
 // import images from "../img";
 import { Button } from "../components/componentindex.js";
-import { DropZone } from "../UploadNFT/uploadNFTIndex.js";
+import { DropZone } from "../uploadNFT/uploadNFTIndex";
 
 const UploadNFT = ({ uploadToIPFS, createNFTofPainting }) => {
   const [price, setPrice] = useState("");

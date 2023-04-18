@@ -30,6 +30,7 @@ const MyListedNFTs = () => {
             const {
               data: { image, name, description },
             } = await axios.get(tokenURI);
+            console.log({ datafrommylisted: data });
             const price = ethers.utils.formatUnits(
               unformattedPrice.toString(),
               "ether"

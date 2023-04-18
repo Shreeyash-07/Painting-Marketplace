@@ -50,6 +50,7 @@ const NFTCard = ({ NFTData, isListed }) => {
               const {
                 data: { image, name, description },
               } = await axios.get(tokenURI);
+              console.log;
               const price = ethers.utils.formatUnits(
                 unformattedPrice.toString(),
                 "ether"
@@ -86,7 +87,7 @@ const NFTCard = ({ NFTData, isListed }) => {
   // console.log(NFTData);
   return (
     <div className={Style.NFTCard}>
-      {NFTData.map((el, i) => (
+      {NFTData.filter((el, i) => el !== undefined).map((el, i) => (
         <Link
           key={i}
           href={{ pathname: "/NFT-details", query: el, isListed: isListed }}
